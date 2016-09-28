@@ -1,0 +1,119 @@
+﻿<div class="row">
+    <div class="col-lg-6">
+        <section class="panel panel-upload">
+            <div class="upload-head">
+                <span>
+                    <i class="fa fa-cloud-upload"></i>
+                </span>
+                <h3>Upload File</h3>
+            </div>
+            <div class="panel-body">
+                <iframe id="uploadFrameID"
+                        name="uploadFrame"
+                        frameborder="0"
+                        scrolling="yes"
+                        (onload) ="frameLoaded()"
+                        width="0"
+                        height="0">
+                </iframe>
+                <form ngNoForm class="form-upload" method="post" target="uploadFrame" enctype="multipart/form-data" action="http://CWILLIA201:7975/amster-1.0/uploadlog">
+                    <div class="login-wrap">
+                        <input type="text" class="form-control" required="required"  name="short_name" [(ngModel)]="short_name" placeholder="Log File name" autofocus>
+                        <input type="text" class="form-control" name="description" [(ngModel)]="description" placeholder="Description">
+                        <label class="btn btn-primary btn-file topmenu-logfile">
+                            Select a log file <input required="required" name = "file" (change)="handleFileSelect($event)" type="file" style="display:none;" />
+                        </label>
+                        <label class="filename">
+                            {{fileName}}
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox"  name="allstack" [(ngModel)]="remStackTrace" value="allStack"> Remove all stacktraces
+                        </label>
+                        <input type="text" name ="ignorelist" class="form-control" [(ngModel)]="stackTrace" placeholder="Stack trace ignore list e.g. Null Pointer Exception | Cbo Error">
+                        <input id="frmUploadBtn" class="btn btn-lg btn-success btn-block" name ="submit" type="submit" (click)="startUpload()" value="Upload" >
+                        <input id="frmClearBtn" class="btn btn-lg btn-info btn-block" name="submit" type="submit" (click)="clear()" value="Clear">
+                    </div>
+
+                </form>
+                
+            </div>
+            <div class="panel-footer revenue-foot">
+            </div>
+
+
+
+         
+        </section>
+    </div>
+
+    <div id="load-progress" class="col-lg-6">
+        <section class="panel panel-upload">
+            <div class="upload-prog">
+                <span>
+                    <i class="fa fa-cloud-upload"></i>
+                </span>
+                <h3>Upload Progress</h3>
+            </div>
+            <div class="panel-body">
+                <div id="hamster-chew">
+                    <div class="prehamster">
+                        <h2>Wooooaah!</h2>
+                        <p></p>
+                        <p>This log is going to take a while to chew through...</p>
+                    </div>
+                    <div class="hamster">
+                        <img class="" src="./img/hamster.gif" alt="Nom Nom Nom" />
+                    </div>
+                    <div class="clear"></div>
+                    <h5>Upload Progress</h5>
+                    <div class="progress progress-success">
+                        <div id="progress-bar" class="progress-bar progress-bar-danger" style="width: 0%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar">
+                            <span class="sr-only">80% Complete</span>
+                        </div>
+                    </div>
+
+                    <h5>Parse Progress</h5>
+                    <div class="progress progress-success">
+                        <div id="progress-bar-parse" class="progress-bar progress-bar-info" style="width: 0%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar">
+                            <span class="sr-only">80% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="hamster-done">
+                    <div class="prehamster">
+                        <h2>TA DA!</h2>
+                        <p></p>
+                        <p>Your log file is ready</p>
+                        <button type="button" class="btn btn-primary" (click)="viewLogFiles()">View log files</button>
+                    </div>
+                    <div class="hamster">
+                        <img class="" src="./img/hamsterfanfare.gif" alt="Nom Nom Nom" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="hamster-error">
+                    <div class="prehamster">
+                        <h2>Oh no!</h2>
+                        <p></p>
+                        <p>Something went wrong</p>
+                    </div>
+                    <div class="hamster">
+                        <img class="" src="./img/hamsterproblem.gif" alt="Nom Nom Nom" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+   
+           
+ 
+                
+            </div>
+            <div class="panel-footer revenue-foot">
+            </div>
+
+
+
+
+        </section>
+    </div>
+
+</div>
