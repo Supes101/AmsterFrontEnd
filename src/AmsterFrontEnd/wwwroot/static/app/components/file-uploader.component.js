@@ -22,6 +22,7 @@ var FileUploaderComponent = (function () {
         this.remStackTrace = false;
         this.stackTrace = "";
         this.timerID = 0;
+        this.writingInfo = false;
         this.logProg = new log_progress_data_1.LogProgress();
     }
     ;
@@ -64,6 +65,7 @@ var FileUploaderComponent = (function () {
         this.file = null;
         this.short_name = "";
         this.description = "";
+        this.writingInfo = false;
         $("#hamster-done").hide();
         $("#hamster-error").hide();
         $("#hamster-chew").show();
@@ -77,8 +79,11 @@ var FileUploaderComponent = (function () {
             _this.logProg = res;
             $('#progress-bar').css('width', _this.logProg.upload_percent + '%').attr('aria-valuenow', _this.logProg.upload_percent);
             $('#progress-bar-parse').css('width', _this.logProg.parse_percent + '%').attr('aria-valuenow', _this.logProg.parse_percent);
-            if (_this.logProg.parse_percent === "100") {
+            console.log("UPLOAD PERCENT: " + _this.logProg.upload_percent + " PARSE PERCENT: " + _this.logProg.parse_percent);
+            if (parseInt(_this.logProg.parse_percent) >= 98) {
+                //  console.log(this.timerID);
                 window.clearInterval(_this.timerID);
+                _this.writingInfo = true;
             }
         });
     };

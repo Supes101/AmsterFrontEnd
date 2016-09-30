@@ -8,4 +8,7 @@
     iconColour: string;
 
     showDesc: boolean = false;
+
+    timeLineClass: string;
+    arrowClass: string;
 }

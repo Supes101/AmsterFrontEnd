@@ -16,7 +16,7 @@ import {LogProgress} from '../data/log-progress.data';
 @Injectable()
 export class LogFileService {
 
-    hostUrl: String = "http://CWILLIA201:7975/amster-1.0"
+    hostUrl: String = "http://CERIW01:7975/AmsterServer-2.0"
 
     constructor(private http: Http) { }
 

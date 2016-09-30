@@ -1,8 +1,23 @@
 ﻿<div class="row">
-    <div class="col-lg-6">
+    <div class="col-sm-12 col-lg-6">
         <!-- File Info -->
         <div class="row">
-            <div *ngIf="logFile" class="col-lg-12">
+            <div *ngIf="!logFile" class="col-sm-12 col-lg-12">
+                <section class="panel">
+                    <div class="revenue-head">
+                        <span>
+                            <i class="fa fa-file-text-o"></i>
+                        </span>
+                        <h3>Log File</h3>
+
+                    </div>
+                    <div class="panel-body">
+                        <label>Loading Log file</label>
+                    </div>
+                </section>
+            </div>
+
+            <div *ngIf="logFile" class="col-sm-12 col-lg-12">
                 <section class="panel">
                     <div class="revenue-head">
                         <span>
@@ -45,7 +60,22 @@
 
         <!-- Thread Info -->
         <div class="row">
-            <div *ngIf="threads" class="col-lg-12">
+
+            <div *ngIf="!threads" class="col-sm-12 col-lg-12">
+                <section class="panel">
+                    <div class="panel-head-blue">
+                        <span>
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <h3>Threads</h3>
+                    </div>
+                    <div class="panel-body">
+                        <label>Loading threads</label>
+                    </div>
+                </section>
+            </div>
+
+            <div *ngIf="threads" class="col-sm-12 col-lg-12">
                 <section class="panel">
                     <div class="panel-head-blue">
                         <span>
@@ -85,14 +115,30 @@
 
         <!-- Diagnostics -->
         <div class="row">
-             <div *ngIf="diagnostics" class="col-lg-12">
+
+            <div *ngIf="!diagLoad" class="col-sm-12 col-lg-12">
+                <section class="panel">
+                    <div class="panel-head-yellow">
+                        <span>
+                            <i class="fa fa-th-list"></i>
+                        </span>
+                        <h3>Diagnostics</h3>
+                    </div>
+                    <div class="panel-body">
+                        <label>Loading Diagnostics</label>
+                    </div>
+
+                </section>
+            </div>
+
+            <div *ngIf="diagnostics" class="col-sm-12 col-lg-12">
                 <div *ngFor="let diag of diagnostics" class="row">
 
                     <div class="col-lg-12">
                         <div class="panel" [ngClass]="diag.style">
                             <div class="panel-body">
                                 <div class="chart">
-                                    <div [attr.id]="'graphy'+diag.id"  class="sparkline" data-fill-color="" data-height="75" data-highlight-line-color="#ffffff" data-line-color="#ffffff" data-line-width="1" data-resize="true" data-spot-color="#ffffff" data-spot-radius="4" data-type="line" data-width="95%"></div>
+                                    <div [attr.id]="'graphy'+diag.id" class="sparkline" data-fill-color="" data-height="75" data-highlight-line-color="#ffffff" data-line-color="#ffffff" data-line-width="1" data-resize="true" data-spot-color="#ffffff" data-spot-radius="4" data-type="line" data-width="95%"></div>
                                 </div>
                             </div>
                             <div class="chart-tittle">
@@ -108,20 +154,29 @@
 
     </div>
 
-    <div class="col-lg-6 ">
+    <div class="col-sm-12 col-lg-6 ">
         <div class="row">
             <!--timeline start-->
-            <div class="col-lg-12" *ngIf="timeLine">
+            <div class="col-sm-12 col-lg-12">
 
                 <section class="panel">
+
+                    <div class="panel-head-green">
+                        <span>
+                            <i class="fa fa-clock-o"></i>
+                        </span>
+                        <h3>Timeline</h3>
+                        <span  *ngIf="logFile" class="rev-combo pull-right">{{logFile.realFileName}}</span>
+                    </div>
+
                     <div class="panel-body">
-                        <div class="text-center mbot30">
-                            <h3 class="timeline-title">Timeline</h3>
-                            <p *ngIf="logFile" class="t-info">{{logFile.realFileName}}</p>
+                        <div *ngIf="!timeLine">
+                            <label>Loading Timeline</label>
                         </div>
 
                         <div class="timeline">
-                            <article [ngClass]="getTimeLineClass()" *ngFor="let tl of timeLine">
+
+                            <article [ngClass]="tl.timeLineClass" *ngFor="let tl of timeLine">
                                 <div class="timeline-desk">
                                     <div class="panel">
                                         <div class="panel-body">
@@ -153,7 +208,7 @@
 
         <!-- Query Info -->
         <div class="row">
-            <div *ngIf="topQueries" class="col-lg-12">
+            <div class="col-sm-12 col-lg-12">
                 <section class="panel">
                     <div class="panel-head-purple">
                         <span>
@@ -162,12 +217,15 @@
                         <h3>Slowest Queries</h3>
                     </div>
                     <div class="panel-body">
-                       <table class="table table-striped table-advance table-hover">
+                        <div *ngIf="!topQueries" >
+                            <label>Loading queries</label>
+                        </div>
+                        <table *ngIf="topQueries" class="table table-striped table-advance table-hover">
                             <thead>
                                 <tr>
-                                   <th>
+                                    <th>
                                         <i class="fa fa-warning"></i>
-                                        Elapsed Time
+                                        Elapsed Time 
                                     </th>
                                     <th>
                                         <i class="fa fa-clock-o"></i>
@@ -201,7 +259,7 @@
 
         <!-- Exception Info -->
         <div class="row">
-            <div *ngIf="exceptions" class="col-lg-12">
+            <div class="col-sm-12 col-lg-12">
                 <section class="panel">
                     <div class="panel-head-terq">
                         <span>
@@ -210,11 +268,15 @@
                         <h3>Exceptions</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped table-advance table-hover">
+                        <div *ngIf="!exceptions">
+                            <label>Loading exceptions</label>
+                        </div>
+
+                        <table  *ngIf="exceptions" class="table table-striped table-advance table-hover">
                             <thead>
                                 <tr>
                                     <th style="width:90%">
-                                        <i  class="fa fa-bug"></i>
+                                        <i class="fa fa-bug"></i>
                                         Exception
                                     </th>
                                     <th style="width:10%">
@@ -227,7 +289,7 @@
                                 <tr *ngFor="let ex of exceptions">
                                     <td>
                                         <p *ngIf="!ex.showDesc">{{getTheFirstBit(ex.stackTrace)}}</p>
-                                        <div  *ngIf="ex.showDesc" style="width:500px" class="wordwrap">
+                                        <div *ngIf="ex.showDesc" style="width:500px" class="wordwrap">
                                             {{ex.stackTrace}}
                                         </div>
                                         <button *ngIf="!ex.showDesc" class="btn btn-info btn-xs" type="button" (click)="moreClick(ex)">More</button>

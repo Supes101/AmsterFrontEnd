@@ -36,6 +36,8 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
 
     doneSon = false;
 
+    diagLoad = false;
+
     constructor(private logFileService: LogFileService, private route: ActivatedRoute) { }
 
 
@@ -87,7 +89,7 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
     }
 
     getOutputFile(fileName) {
-        return "http://CWILLIA201:7975/uploaded_logs/" + fileName;
+        return "http://CERIW01:7975/uploaded_logs/" + fileName;
     }
 
     getTheFirstBit(s) {
@@ -112,6 +114,13 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
         this.logFileService.getTimeLine(id)
             .subscribe(
             data => {
+                for (var i = 0; i < data.length; i++) {
+
+                    data[i].timeLineClass = this.getTimeLineClass();
+                    data[i].arrowClass = this.getArrowClass();
+ 
+                }
+    
                 this.timeLine = data;
             },
             error => this.errorMessage = <any>error);
@@ -148,6 +157,7 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
         this.logFileService.getDiagnostics(id)
             .subscribe(
             data => {  
+               
                 for (var i = 0; i < data.length; i++) {
             
                     data[i].style = this.getChartStyle();
@@ -157,7 +167,9 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
                     }
 
                 }
-                this.diagnostics = data;     
+                this.diagnostics = data;
+                this.diagLoad = true;
+
             },
             error => this.errorMessage = <any>error);
     }

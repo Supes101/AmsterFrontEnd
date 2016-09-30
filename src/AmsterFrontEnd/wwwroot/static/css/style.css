@@ -24,6 +24,10 @@ ul li {
     list-style: none;
 }
 
+.pointy{
+cursor: pointer;
+}
+
 a, a:hover, a:focus {
     text-decoration: none;
     outline: none;
@@ -172,6 +176,7 @@ margin-top:5px;
 .form-upload label.filename{
     margin-top:10px;
     margin-left:10px;
+    overflow:hidden;
 }
 
 .form-upload .checkbox {
@@ -1385,6 +1390,7 @@ h3.timeline-title {
 .timeline-desk p {
     font-size: 12px;
     margin-bottom: 0;
+    overflow:hidden;
 }
 
 .timeline-desk a {
@@ -1429,7 +1435,7 @@ h3.timeline-title {
 /*---upload----*/
 
 .panel-upload{
-    height:450px;
+  
 }
 
 .upload-head {
@@ -1551,6 +1557,81 @@ h3.timeline-title {
     border-radius: 0px 4px 0px 0px;
 }
 
+/*---panel-head -green----*/
+
+.panel-head-green {
+    background:  #a9d96c;
+    -webkit-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+    color: #fff;
+    line-height: 50px;
+}
+
+.panel-head-green span {
+    background: #99c262;
+    padding: 16px;
+    -webkit-border-radius: 4px 0px 0px 0px;
+    border-radius: 4px 0px 0px 0px;
+}
+
+.panel-head-green span i {
+    font-size: 18px;
+}
+
+.panel-head-green h3 {
+    display: inline;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.panel-head-green span.rev-combo {
+    background: #99c262;
+    padding: 16px;
+    line-height: normal;
+    -webkit-border-radius: 0px 4px 0px 0px;
+    border-radius: 0px 4px 0px 0px;
+}
+
+
+
+
+
+/*---panel-head -yellow----*/
+
+.panel-head-yellow {
+    background:  #f8d347;
+    -webkit-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+    color: #fff;
+    line-height: 50px;
+}
+
+.panel-head-yellow span {
+    background: #fcb322;
+    padding: 16px;
+    -webkit-border-radius: 4px 0px 0px 0px;
+    border-radius: 4px 0px 0px 0px;
+}
+
+.panel-head-yellow span i {
+    font-size: 18px;
+}
+
+.panel-head-yellow h3 {
+    display: inline;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.panel-head-yellowspan.rev-combo {
+    background: #f8d347;
+    padding: 16px;
+    line-height: normal;
+    -webkit-border-radius: 0px 4px 0px 0px;
+    border-radius: 0px 4px 0px 0px;
+}
 
 /*---panel-head -blue----*/
 

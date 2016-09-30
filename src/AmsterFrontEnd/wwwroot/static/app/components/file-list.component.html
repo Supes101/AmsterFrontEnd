@@ -16,7 +16,7 @@
                                 <i class="fa fa-bookmark"></i>
                                 Name
                             </th>
-                            <th>
+                            <th class="hidden-sm">
                                 <i class="fa fa-question-circle"></i>
                                 Description
                             </th>
@@ -24,18 +24,18 @@
                                 <i class="fa fa-file"></i>
                                 File Name
                             </th>
-                            <th>
+                            <th class="hidden-sm">
                                 <i class="fa fa fa-calendar"></i>
                                 Added on
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let file of logFiles" (click)="onSelect(file)">
+                        <tr class="pointy" *ngFor="let file of logFiles" (click)="onSelect(file)">
                             <td>{{file.shortName}}</td>
-                            <td>{{file.description}}</td>
+                            <td class="hidden-sm">{{file.description}}</td>
                             <td>{{file.realFileName}}</td>
-                            <td>{{file.createDate}}</td>
+                            <td class="hidden-sm">{{file.createDate}}</td>
                         </tr>
                     </tbody>
                 </table>

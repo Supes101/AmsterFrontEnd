@@ -15,7 +15,7 @@ require('../rxjs-operators');
 var LogFileService = (function () {
     function LogFileService(http) {
         this.http = http;
-        this.hostUrl = "http://CWILLIA201:7975/amster-1.0";
+        this.hostUrl = "http://CERIW01:7975/AmsterServer-2.0";
     }
     LogFileService.prototype.getLogFiles = function () {
         return this.http.get(this.hostUrl + '/rest/logfile')

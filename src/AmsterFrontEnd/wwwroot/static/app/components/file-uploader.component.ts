@@ -23,6 +23,7 @@ export class FileUploaderComponent implements OnInit {
     remStackTrace = false;
     stackTrace = "";
     timerID = 0;
+    writingInfo = false;
 
 
     logProg: LogProgress = new LogProgress();;
@@ -82,6 +83,7 @@ export class FileUploaderComponent implements OnInit {
         this.file = null;
         this.short_name = "";
         this.description = "";
+        this.writingInfo = false;
 
         $("#hamster-done").hide();
         $("#hamster-error").hide();
@@ -98,8 +100,12 @@ export class FileUploaderComponent implements OnInit {
             this.logProg = res
             $('#progress-bar').css('width', this.logProg.upload_percent + '%').attr('aria-valuenow', this.logProg.upload_percent);
             $('#progress-bar-parse').css('width', this.logProg.parse_percent + '%').attr('aria-valuenow', this.logProg.parse_percent);
-            if (this.logProg.parse_percent === "100") {
+            console.log("UPLOAD PERCENT: "+this.logProg.upload_percent + " PARSE PERCENT: " + this.logProg.parse_percent);
+            if (parseInt(this.logProg.parse_percent) >= 98) {
+              //  console.log(this.timerID);
                 window.clearInterval(this.timerID);
+                this.writingInfo = true;
+              //  console.log("CU TTHAT OUT");
             }
         });
     }

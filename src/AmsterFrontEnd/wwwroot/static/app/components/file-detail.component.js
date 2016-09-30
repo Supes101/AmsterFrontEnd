@@ -21,6 +21,7 @@ var FileDetailComponent = (function () {
         this.charts = ['terques-chart', 'purple-chart', 'green-chart', 'red-chart', 'yellow-chart', 'blue-chart'];
         this.chartPos = 0;
         this.doneSon = false;
+        this.diagLoad = false;
     }
     FileDetailComponent.prototype.ngAfterViewChecked = function () {
         /* need _canScrollDown because it triggers even if you enter text in the textarea */
@@ -61,7 +62,7 @@ var FileDetailComponent = (function () {
         e.showDesc = false;
     };
     FileDetailComponent.prototype.getOutputFile = function (fileName) {
-        return "http://CWILLIA201:7975/uploaded_logs/" + fileName;
+        return "http://CERIW01:7975/uploaded_logs/" + fileName;
     };
     FileDetailComponent.prototype.getTheFirstBit = function (s) {
         if (s.length < 80) {
@@ -85,6 +86,10 @@ var FileDetailComponent = (function () {
         var _this = this;
         this.logFileService.getTimeLine(id)
             .subscribe(function (data) {
+            for (var i = 0; i < data.length; i++) {
+                data[i].timeLineClass = _this.getTimeLineClass();
+                data[i].arrowClass = _this.getArrowClass();
+            }
             _this.timeLine = data;
         }, function (error) { return _this.errorMessage = error; });
     };
@@ -121,6 +126,7 @@ var FileDetailComponent = (function () {
                 }
             }
             _this.diagnostics = data;
+            _this.diagLoad = true;
         }, function (error) { return _this.errorMessage = error; });
     };
     FileDetailComponent.prototype.getArrowClass = function () {
