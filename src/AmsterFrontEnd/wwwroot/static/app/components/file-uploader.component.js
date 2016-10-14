@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var log_file_service_1 = require('../services/log-file.service');
 var log_progress_data_1 = require('../data/log-progress.data');
+var amster_properties_1 = require('../amster.properties');
 var FileUploaderComponent = (function () {
     function FileUploaderComponent(logFileService, router) {
         this.logFileService = logFileService;
@@ -24,8 +25,8 @@ var FileUploaderComponent = (function () {
         this.timerID = 0;
         this.writingInfo = false;
         this.logProg = new log_progress_data_1.LogProgress();
+        this.amster = new amster_properties_1.Amster();
     }
-    ;
     FileUploaderComponent.prototype.ngOnInit = function () {
         var _this = this;
         $("#hamster-done").hide();

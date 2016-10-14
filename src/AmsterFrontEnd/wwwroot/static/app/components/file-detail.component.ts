@@ -8,6 +8,7 @@ import { ThreadFile }   from '../data/thread-file.data';
 import { Query }   from '../data/query.data';
 import { DiagInfo }   from '../data/diag-info.data';
 import { Exception }   from '../data/exception.data';
+import { Amster } from '../amster.properties';
 
 declare var $: any;
 
@@ -27,6 +28,8 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
     topQueries: Query[];
     diagnostics: DiagInfo[];
     exceptions: Exception[];
+
+    amster: Amster = new Amster();
 
     timeLineClass = "timeline-item"
     arrowClass = "arrow";
@@ -89,7 +92,7 @@ export class FileDetailComponent implements OnInit, AfterViewChecked{
     }
 
     getOutputFile(fileName) {
-        return "http://CERIW01:7975/uploaded_logs/" + fileName;
+        return this.amster.log_location + fileName;
     }
 
     getTheFirstBit(s) {

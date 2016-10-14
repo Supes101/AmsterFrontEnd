@@ -17,7 +17,7 @@
                         width="0"
                         height="0">
                 </iframe>
-                <form ngNoForm class="form-upload" method="post" target="uploadFrame" enctype="multipart/form-data" action="http://CERIW01:7975/AmsterServer-2.0/uploadlog">
+                <form ngNoForm class="form-upload" method="post" target="uploadFrame" enctype="multipart/form-data" action="{{amster.upload_servlet}}">
                     <div class="login-wrap">
                         <input type="text" class="form-control" required="required"  name="short_name" [(ngModel)]="short_name" placeholder="Log File name" autofocus>
                         <input type="text" class="form-control" name="description" [(ngModel)]="description" placeholder="Description">

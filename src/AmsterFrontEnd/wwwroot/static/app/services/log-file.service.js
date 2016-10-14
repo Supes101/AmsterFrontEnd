@@ -12,10 +12,12 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
 require('../rxjs-operators');
+var amster_properties_1 = require('../amster.properties');
 var LogFileService = (function () {
     function LogFileService(http) {
         this.http = http;
-        this.hostUrl = "http://CERIW01:7975/AmsterServer-2.0";
+        this.amster = new amster_properties_1.Amster();
+        this.hostUrl = this.amster.server_location;
     }
     LogFileService.prototype.getLogFiles = function () {
         return this.http.get(this.hostUrl + '/rest/logfile')

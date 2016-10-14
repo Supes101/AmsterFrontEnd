@@ -12,11 +12,15 @@ import {DiagInfo} from '../data/diag-info.data';
 import {Exception} from '../data/exception.data';
 
 import {LogProgress} from '../data/log-progress.data';
+import { Amster } from '../amster.properties';
 
 @Injectable()
 export class LogFileService {
 
-    hostUrl: String = "http://CERIW01:7975/AmsterServer-2.0"
+
+    amster: Amster = new Amster();
+
+    hostUrl: string = this.amster.server_location;
 
     constructor(private http: Http) { }
 

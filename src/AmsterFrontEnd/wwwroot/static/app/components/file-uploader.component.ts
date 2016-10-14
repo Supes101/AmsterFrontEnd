@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LogFileService }   from '../services/log-file.service';
 import { LogFile }   from '../data/log-file.data';
 import { LogProgress }   from '../data/log-progress.data';
+import { Amster } from '../amster.properties';
 
 declare var $: any;
 
@@ -26,7 +27,8 @@ export class FileUploaderComponent implements OnInit {
     writingInfo = false;
 
 
-    logProg: LogProgress = new LogProgress();;
+    logProg: LogProgress = new LogProgress();
+    amster: Amster = new Amster();
 
     constructor(private logFileService: LogFileService, private router: Router) { }
 

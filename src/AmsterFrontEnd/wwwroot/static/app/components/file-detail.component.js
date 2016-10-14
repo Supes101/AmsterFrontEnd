@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var log_file_service_1 = require('../services/log-file.service');
+var amster_properties_1 = require('../amster.properties');
 var FileDetailComponent = (function () {
     function FileDetailComponent(logFileService, route) {
         this.logFileService = logFileService;
         this.route = route;
         this.errorMessage = "";
+        this.amster = new amster_properties_1.Amster();
         this.timeLineClass = "timeline-item";
         this.arrowClass = "arrow";
         this.charts = ['terques-chart', 'purple-chart', 'green-chart', 'red-chart', 'yellow-chart', 'blue-chart'];
@@ -62,7 +64,7 @@ var FileDetailComponent = (function () {
         e.showDesc = false;
     };
     FileDetailComponent.prototype.getOutputFile = function (fileName) {
-        return "http://CERIW01:7975/uploaded_logs/" + fileName;
+        return this.amster.log_location + fileName;
     };
     FileDetailComponent.prototype.getTheFirstBit = function (s) {
         if (s.length < 80) {
